@@ -222,7 +222,6 @@ string Goalkeeper::print() const {
 // -------------- FantasyTeam ------------------
 
 FantasyTeam::FantasyTeam() {
-    // IMPLEMENT ME
 }
 
 FantasyTeam::~FantasyTeam() {
