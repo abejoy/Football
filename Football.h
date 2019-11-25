@@ -73,6 +73,8 @@ public:
 
     Team * getTeam() const;
 
+    string getName() const;
+
     // TODO: add any protected/private member variables you need
 
 private:

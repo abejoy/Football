@@ -72,10 +72,14 @@ Team * Player::getTeam() const {
     return team;
 }
 
+string Player::getName() const {
+    return name;
+}
+
 // -------------- Attacker ------------------
 
-Attacker::Attacker(const string& name, Team* t) {
-    Player(name, t);
+Attacker::Attacker(const string& name, Team* t): Player(name, t) {
+
 }
 
 Attacker::~Attacker() {
@@ -83,7 +87,8 @@ Attacker::~Attacker() {
 }
 
 int Attacker::getScore() const {
-    int genericScore = Player::getScore();
+//    int genericScore = Player::getScore();
+    int genericScore = 0;
     genericScore += GOAL_POINT * getGoalsScored();
     return genericScore;
 }
