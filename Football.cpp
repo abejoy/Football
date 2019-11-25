@@ -101,8 +101,7 @@ string Attacker::print() const {
 
 // -------------- Midfielder ------------------
 
-Midfielder::Midfielder(const string& name, Team* t) {
-    Player(name, t);
+Midfielder::Midfielder(const string& name, Team* t): Player(name, t)  {
 }
 
 Midfielder::~Midfielder() {
@@ -128,8 +127,7 @@ string Midfielder::print() const {
 
 // -------------- Defender ------------------
 
-Defender::Defender(const string& name, Team* t) {
-    Player(name, t);
+Defender::Defender(const string& name, Team* t): Player(name, t)  {
 }
 
 Defender::~Defender() {
@@ -161,8 +159,7 @@ string Defender::print() const {
 
 // -------------- Goalkeeper ------------------
 
-Goalkeeper::Goalkeeper(const string& name, Team* t) {
-    Player(name, t);
+Goalkeeper::Goalkeeper(const string& name, Team* t): Player(name, t)  {
     shotsSaved = 0;
 }
 
