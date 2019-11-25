@@ -206,9 +206,6 @@ int Goalkeeper::getScore() const {
 
     return genericScore;
 
-
-
-
 }
 
 string Goalkeeper::print() const {
