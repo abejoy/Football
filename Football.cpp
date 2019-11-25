@@ -6,17 +6,25 @@
 
 // -------------- Team --------------------
 
-Team::Team(const string& name) {
-    // IMPLEMENT ME
+Team::Team(const string& name): teamName(name) {
 }
 
 void Team::addGoalsConceded(int g) {
-    // IMPLEMENT ME
+    goalsConceded = g;
 }
 
 Team::~Team() {
     // IMPLEMENT ME
 }
+
+string Team::getTeamName() {
+    return teamName;
+}
+
+int Team::getGoalsConceded() {
+    return goalsConceded;
+}
+
 
 // -------------- Player ------------------
 
@@ -25,7 +33,10 @@ Player::Player() {
 }
 
 Player::Player(const string& name, Team* t) {
-    // IMPLEMENT ME
+    this -> name = name;
+    team = t;
+    goalsScored = 0;
+    assists = 0;
 }
 
 // don't remove this even if you want to make the destructor pure virtual
@@ -34,15 +45,16 @@ Player::~Player() {
 }
 
 void Player::addGoalsScored(int g) {
-    // IMPLEMENT ME
+    goalsScored += g;
 }
 
 void Player::addAssists(int a) {
-    // IMPLEMENT ME
+    assists += a;
 }
 
 int Player::getScore() const {
-    // IMPLEMENT ME
+    //assists
+    return ASSISTS_POINT * assists;
 }
 
 string Player::print() const {
@@ -52,10 +64,18 @@ string Player::print() const {
     return removeMe;
 }
 
+int Player::getGoalsScored() const {
+    return goalsScored;
+}
+
+Team * Player::getTeam() const {
+    return team;
+}
+
 // -------------- Attacker ------------------
 
 Attacker::Attacker(const string& name, Team* t) {
-    // IMPLEMENT ME
+    Player(name, t);
 }
 
 Attacker::~Attacker() {
@@ -63,10 +83,9 @@ Attacker::~Attacker() {
 }
 
 int Attacker::getScore() const {
-    // IMPLEMENT ME
-    // below are just stub code
-    int removeMe = 0;
-    return removeMe;
+    int genericScore = Player::getScore();
+    genericScore += GOAL_POINT * getGoalsScored();
+    return genericScore;
 }
 
 string Attacker::print() const {
@@ -79,7 +98,7 @@ string Attacker::print() const {
 // -------------- Midfielder ------------------
 
 Midfielder::Midfielder(const string& name, Team* t) {
-    // IMPLEMENT ME
+    Player(name, t);
 }
 
 Midfielder::~Midfielder() {
@@ -87,10 +106,13 @@ Midfielder::~Midfielder() {
 }
 
 int Midfielder::getScore() const {
-    // IMPLEMENT ME
-    // below are just stub code
-    int removeMe = 0;
-    return removeMe;
+    int genericScore = Player::getScore();
+    //goals points
+    genericScore += GOAL_POINT * getGoalsScored();
+
+    //conceded points
+    genericScore += (Player::getTeam()->getGoalsConceded() == 0) ? NO_GOALS_CONCEDED_POINT : 0;
+    return genericScore;
 }
 
 string Midfielder::print() const {
@@ -103,7 +125,7 @@ string Midfielder::print() const {
 // -------------- Defender ------------------
 
 Defender::Defender(const string& name, Team* t) {
-    // IMPLEMENT ME
+    Player(name, t);
 }
 
 Defender::~Defender() {
@@ -111,10 +133,19 @@ Defender::~Defender() {
 }
 
 int Defender::getScore() const {
-    // IMPLEMENT ME
-    // below are just stub code
-    int removeMe = 0;
-    return removeMe;
+    int genericScore = Player::getScore();
+
+    //goal points
+    genericScore += GOAL_POINT * getGoalsScored();
+
+    //conceded points
+    genericScore += (Player::getTeam()->getGoalsConceded() == 0) ? NO_GOALS_CONCEDED_POINT : 0;
+
+    //reduce points based on goals
+    genericScore -= ((Player::getTeam()->getGoalsConceded() / 2) * REDUCTION_EVERY_2_GOALS_CONCEDED_BY_THEIR_TEAM);
+
+    return genericScore;
+
 }
 
 string Defender::print() const {
@@ -127,7 +158,8 @@ string Defender::print() const {
 // -------------- Goalkeeper ------------------
 
 Goalkeeper::Goalkeeper(const string& name, Team* t) {
-    // IMPLEMENT ME
+    Player(name, t);
+    shotsSaved = 0;
 }
 
 Goalkeeper::~Goalkeeper() {
@@ -135,14 +167,28 @@ Goalkeeper::~Goalkeeper() {
 }
 
 void Goalkeeper::addShotsSaved(int ss) {
-    // IMPLEMENT ME
+    shotsSaved += ss;
 }
 
 int Goalkeeper::getScore() const {
-    // IMPLEMENT ME
-    // below are just stub code
-    int removeMe = 0;
-    return removeMe;
+    int genericScore = Player::getScore();
+    //goal points
+    genericScore += GOAL_POINT * getGoalsScored();
+
+    //conceded points
+    genericScore += (Player::getTeam()->getGoalsConceded() == 0) ? NO_GOALS_CONCEDED_POINT : 0;
+
+    //reduce points based on goals
+    genericScore -= ((Player::getTeam()->getGoalsConceded() / 2) * REDUCTION_EVERY_2_GOALS_CONCEDED_BY_THEIR_TEAM);
+
+    //points for every 3 shots the keeper saved
+    genericScore += (shotsSaved / 3) * EVERY_3_SHOTS_SAVED;
+
+    return genericScore;
+
+
+
+
 }
 
 string Goalkeeper::print() const {

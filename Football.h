@@ -15,7 +15,15 @@ public:
     // default 1 is assumed.
     void addGoalsConceded(int g = 1);
 
+
+    string getTeamName();
+
+    int getGoalsConceded();
+
     // TODO: add any private member variables
+private:
+    string teamName;
+    int goalsConceded;
 
 };
 
@@ -61,8 +69,23 @@ public:
     // but minor formatting differences will be tolerated
     string print() const;
 
+    int getGoalsScored() const;
+
+    Team * getTeam() const;
+
     // TODO: add any protected/private member variables you need
+
+private:
+    string name;
+    Team* team;
+    int goalsScored;
+    int assists;
+    int playerScore;
+
+    const int ASSISTS_POINT = 3;
 };
+
+
 
 // Classes for each of the 4 roles
 // Most functions are explained in the Player class above
@@ -75,6 +98,8 @@ public:
     string print() const;
 
     // TODO: you can add any private member variables
+private:
+    const int GOAL_POINT = 4;
 };
 
 class Midfielder : public Player {
@@ -85,6 +110,9 @@ public:
     string print() const;
 
     // TODO: you can add any private member variables
+private:
+    const int GOAL_POINT = 5;
+    const int NO_GOALS_CONCEDED_POINT = 1;
 };
 
 class Defender : public Player {
@@ -95,6 +123,10 @@ public:
     string print() const;
 
     // TODO: you can add any private member variables
+private:
+    const int GOAL_POINT = 6;
+    const int NO_GOALS_CONCEDED_POINT = 4;
+    const int REDUCTION_EVERY_2_GOALS_CONCEDED_BY_THEIR_TEAM = 1;
 };
 
 class Goalkeeper : public Player {
@@ -109,6 +141,13 @@ public:
     void addShotsSaved(int ss = 1);
 
     // TODO: you can add any private member variables
+private:
+    int shotsSaved;
+
+    const int GOAL_POINT = 6;
+    const int NO_GOALS_CONCEDED_POINT = 4;
+    const int REDUCTION_EVERY_2_GOALS_CONCEDED_BY_THEIR_TEAM = 1;
+    const int EVERY_3_SHOTS_SAVED = 1;
 };
 
 // Class for a fantasy team
