@@ -54,11 +54,11 @@ public:
     // If a is omitted, 1 is assumed
     void addAssists(int a = 1);
 
-    // Returns the score of this player, based on all the individual
+     // Returns the score of this player, based on all the individual
     // and team statistics. It is assumed that the caller knows what
     // they are doing and have called the various add..() functions
     // before calling this function.
-    int getScore() const;
+     virtual int getScore() const;
 
     // Returns a string that includes the player's name, the position
     // they play (goalkeeper/attacker etc.), the name of

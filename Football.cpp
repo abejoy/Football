@@ -87,8 +87,7 @@ Attacker::~Attacker() {
 }
 
 int Attacker::getScore() const {
-//    int genericScore = Player::getScore();
-    int genericScore = 0;
+    int genericScore = Player::getScore();
     genericScore += GOAL_POINT * getGoalsScored();
     return genericScore;
 }
