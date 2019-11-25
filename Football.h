@@ -67,13 +67,15 @@ public:
     // points scored.
     // Ideally you should print this exactly as described in the test cases
     // but minor formatting differences will be tolerated
-    string print() const;
+    virtual string print() const;
 
     int getGoalsScored() const;
 
     Team * getTeam() const;
 
     string getName() const;
+
+    int getAssists() const;
 
     // TODO: add any protected/private member variables you need
 

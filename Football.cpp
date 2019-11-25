@@ -58,10 +58,22 @@ int Player::getScore() const {
 }
 
 string Player::print() const {
-    // IMPLEMENT ME
-    // below are just stub code
-    string removeMe = "";
-    return removeMe;
+    string s = ": ";
+    s += getName();
+    s +=  ", Team: ";
+    s +=  getTeam()->getTeamName();
+    s +=  "\n";
+    s += " Goals scored: ";
+    s += to_string(getGoalsScored());
+    s += "\n";
+    s += " Assists: ";
+    s += to_string(getAssists());
+    s += "\n";
+    s += " Goals conceded: ";
+    s += to_string(getTeam()->getGoalsConceded());
+    s += "\n";
+
+    return s;
 }
 
 int Player::getGoalsScored() const {
@@ -74,6 +86,10 @@ Team * Player::getTeam() const {
 
 string Player::getName() const {
     return name;
+}
+
+int Player::getAssists() const {
+    return assists;
 }
 
 // -------------- Attacker ------------------
@@ -93,10 +109,11 @@ int Attacker::getScore() const {
 }
 
 string Attacker::print() const {
-    // IMPLEMENT ME
-    // below are just stub code
-    string removeMe = "";
-    return removeMe;
+    string toReturn = "Attacker";
+    toReturn += Player::print();
+    toReturn += " Score: ";
+    toReturn += to_string(getScore());
+    return toReturn;
 }
 
 // -------------- Midfielder ------------------
@@ -119,10 +136,11 @@ int Midfielder::getScore() const {
 }
 
 string Midfielder::print() const {
-    // IMPLEMENT ME
-    // below are just stub code
-    string removeMe = "";
-    return removeMe;
+    string toReturn = "Midfielder";
+    toReturn += Player::print();
+    toReturn += " Score: ";
+    toReturn += to_string(getScore());
+    return toReturn;
 }
 
 // -------------- Defender ------------------
@@ -151,10 +169,11 @@ int Defender::getScore() const {
 }
 
 string Defender::print() const {
-    // IMPLEMENT ME
-    // below are just stub code
-    string removeMe = "";
-    return removeMe;
+    string toReturn = "Defender";
+    toReturn += Player::print();
+    toReturn += " Score: ";
+    toReturn += to_string(getScore());
+    return toReturn;
 }
 
 // -------------- Goalkeeper ------------------
@@ -193,10 +212,14 @@ int Goalkeeper::getScore() const {
 }
 
 string Goalkeeper::print() const {
-    // IMPLEMENT ME
-    // below are just stub code
-    string removeMe = "";
-    return removeMe;
+    string toReturn = "Goalkeeper";
+    toReturn += Player::print();
+    toReturn += " Shots saved: ";
+    toReturn += to_string(shotsSaved);
+    toReturn += "\n";
+    toReturn += " Score: ";
+    toReturn += to_string(getScore());
+    return toReturn;
 }
 
 // -------------- FantasyTeam ------------------
