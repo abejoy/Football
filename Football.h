@@ -180,7 +180,9 @@ private:
     // Member variables: the 11 players
     // You must not change this.
     Player* players[11];
+    int size;
 
     // TODO: You can add additional data members
 
+    bool checkIfPlayerIsAdded(Player *p);
 };

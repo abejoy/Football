@@ -222,6 +222,11 @@ string Goalkeeper::print() const {
 // -------------- FantasyTeam ------------------
 
 FantasyTeam::FantasyTeam() {
+    *players = new Player[11];
+    for(int i = 0; i < 11; i++){
+        players[i] = nullptr;
+    }
+    size = 0;
 }
 
 FantasyTeam::~FantasyTeam() {
@@ -229,15 +234,32 @@ FantasyTeam::~FantasyTeam() {
 }
 
 bool FantasyTeam::addPlayer(Player* p) {
-    // IMPLEMENT ME
-    // below are just stub code
-    bool removeMe = true;
-    return removeMe;
+
+    if(!checkIfPlayerIsAdded(p) && size < 11) {
+        //add player
+        players[size] = p;
+        size++;
+        return true;
+    }
+
+    return false;
 }
 
 int FantasyTeam::getScore() const {
-    // IMPLEMENT ME
-    // below are just stub code
-    int removeMe = 0;
-    return removeMe;
+    int totalScore = 0;
+    for(int i = 0; i <= size; i++){
+        if(players[i] != nullptr){
+            totalScore += players[i]->getScore();
+        }
+    }
+    return totalScore;
+}
+
+bool FantasyTeam::checkIfPlayerIsAdded(Player *p) {
+    for(int i = 0; i <= size; i++){
+        if(players[i] == p){
+            return true;
+        }
+    }
+    return  false;
 }

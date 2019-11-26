@@ -3,27 +3,8 @@
 
 int main() {
 
-    Team* t = new Team("Example team");
-    Goalkeeper* p = new Goalkeeper("Some goalkeeper", t);
-    p->addGoalsScored(1);
-    p->addAssists(1);
-    p->addShotsSaved(11);
-    t->addGoalsConceded(9);
-    string s = "Goalkeeper: Some goalkeeper, Team: Example team\n";
-    s += " Goals scored: 1\n";
-    s += " Assists: 1\n";
-    s += " Goals conceded: 9\n";
-    s += " Shots saved: 11\n";
-    s += " Score: 8";
-    cout << "---- Should produce something like this: ----" << endl;
-    cout << s << endl;
-    cout << "----------- Program printed this: -----------\n";
-    string s2 = p->print();
-    cout << s2 << endl;
-    if (s != s2) cout << "Goalkeeper print incorrect";
-    else cout << "Tested the goalkeeper print.";
 
-    /* // data setup
+     // data setup
      Team* leic = new Team("Leicester City");
      Team* mancity = new Team("Manchester City");
      Team* chelsea = new Team("Chelsea");
@@ -72,5 +53,5 @@ int main() {
 
      cout << "Team score: " << champion2016.getScore() << endl;
 
-     // not bothered with delete's*/
+     // not bothered with delete's
 }
