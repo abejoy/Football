@@ -2,6 +2,7 @@
    the implementation can be empty. In fact, you may wish to remove
    some of the functions entirely
 */
+#include <iostream>
 #include "Football.h"
 
 // -------------- Team --------------------
@@ -132,6 +133,7 @@ int Midfielder::getScore() const {
 
     //conceded points
     genericScore += (Player::getTeam()->getGoalsConceded() == 0) ? NO_GOALS_CONCEDED_POINT : 0;
+    std::cout<< "i go this df " << genericScore << endl;
     return genericScore;
 }
 
