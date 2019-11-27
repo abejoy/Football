@@ -41,7 +41,6 @@ Player::Player(const string& name, Team* t) {
 
 // don't remove this even if you want to make the destructor pure virtual
 Player::~Player() {
-    delete team;
 }
 
 void Player::addGoalsScored(int g) {
