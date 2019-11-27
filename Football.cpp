@@ -132,7 +132,7 @@ int Midfielder::getScore() const {
     std::cout<< "i go this after getting const " << genericScore << endl;
     //goals points
     genericScore += GOAL_POINT * getGoalsScored();
-    std::cout<< "i go this after getting goal scored " << genericScore << endl;
+    std::cout<< "i go this after getting goal scored " << GOAL_POINT << " " << getGoalsScored()  << endl;
 
     //conceded points
     genericScore += (Player::getTeam()->getGoalsConceded() == 0) ? NO_GOALS_CONCEDED_POINT : 0;
