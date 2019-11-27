@@ -2,7 +2,6 @@
    the implementation can be empty. In fact, you may wish to remove
    some of the functions entirely
 */
-#include <iostream>
 #include "Football.h"
 
 // -------------- Team --------------------
@@ -56,7 +55,6 @@ void Player::addAssists(int a) {
 
 int Player::getScore() const {
     //assists
-    cout<< "constructor called"<<endl;
     return ASSISTS_POINT * assists;
 }
 
