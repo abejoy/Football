@@ -14,7 +14,7 @@ void Team::addGoalsConceded(int g) {
 }
 
 Team::~Team() {
-    // IMPLEMENT ME
+    // no need to delete anything as no pointers created
 }
 
 string Team::getTeamName() {
@@ -41,7 +41,7 @@ Player::Player(const string& name, Team* t) {
 
 // don't remove this even if you want to make the destructor pure virtual
 Player::~Player() {
-    // IMPLEMENT ME
+    delete[] team;
 }
 
 void Player::addGoalsScored(int g) {
@@ -99,7 +99,7 @@ Attacker::Attacker(const string& name, Team* t): Player(name, t) {
 }
 
 Attacker::~Attacker() {
-    // IMPLEMENT ME
+    //no pointer i made
 }
 
 int Attacker::getScore() const {
@@ -122,7 +122,7 @@ Midfielder::Midfielder(const string& name, Team* t): Player(name, t)  {
 }
 
 Midfielder::~Midfielder() {
-    // IMPLEMENT ME
+    // no pointer i made
 }
 
 int Midfielder::getScore() const {
@@ -149,7 +149,7 @@ Defender::Defender(const string& name, Team* t): Player(name, t)  {
 }
 
 Defender::~Defender() {
-    // IMPLEMENT ME
+    // no pointer i made
 }
 
 int Defender::getScore() const {
@@ -183,7 +183,7 @@ Goalkeeper::Goalkeeper(const string& name, Team* t): Player(name, t)  {
 }
 
 Goalkeeper::~Goalkeeper() {
-    // IMPLEMENT ME
+    // no pointer i made
 }
 
 void Goalkeeper::addShotsSaved(int ss) {
@@ -230,7 +230,6 @@ FantasyTeam::FantasyTeam() {
 }
 
 FantasyTeam::~FantasyTeam() {
-    // IMPLEMENT ME
 }
 
 bool FantasyTeam::addPlayer(Player* p) {
