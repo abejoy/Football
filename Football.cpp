@@ -8,6 +8,7 @@
 // -------------- Team --------------------
 
 Team::Team(const string& name): teamName(name) {
+    goalsConceded = 0;
 }
 
 void Team::addGoalsConceded(int g) {
