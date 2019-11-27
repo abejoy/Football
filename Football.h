@@ -44,7 +44,7 @@ public:
     Player(const string& name, Team* t);
 
     // Destructor
-    ~Player();
+    virtual ~Player();
 
     // Increases the player's number of goals scored by g.
     // If g is omitted, 1 is assumed
