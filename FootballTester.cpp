@@ -2,8 +2,6 @@
 #include "FootballTester.h"
 #include "Football.h"
 
-using namespace std;
-
 FootballTester::FootballTester() : TesterBase() {
 }
 
@@ -93,6 +91,8 @@ void FootballTester::testAttackerPrint() {
     cout << "----------- Program printed this: -----------\n";
     string s2 = p->print();
     cout << s2 << endl;
+    delete p;
+    delete t;
     if (s != s2) errorOut_("Attacker print incorrect",1);
     else passOut_("Tested the attacker print.");
 }
@@ -183,6 +183,8 @@ void FootballTester::testMidfielderPrint() {
     cout << "----------- Program printed this: -----------\n";
     string s2 = p->print();
     cout << s2 << endl;
+    delete p;
+    delete t;
     if (s != s2) errorOut_("Midfielder print incorrect",1);
     else passOut_("Tested the midfielder print.");
 
@@ -277,6 +279,8 @@ void FootballTester::testDefenderPrint() {
     cout << "----------- Program printed this: -----------\n";
     string s2 = p->print();
     cout << s2 << endl;
+    delete p;
+    delete t;
     if (s != s2) errorOut_("Defender print incorrect",1);
     else passOut_("Tested the defender print.");
 }
@@ -288,10 +292,9 @@ void FootballTester::testGoalkeeperCtor() {
     Player* p = new Goalkeeper("Some goalkeeper", t);
     if (p->getScore() != 4)
         errorOut_("Goalkeeper score not 4 initially",1);
-    passOut_("Tested the goalkeeper constructor.");
     delete p;
     delete t;
-
+    passOut_("Tested the goalkeeper constructor.");
 }
 
 void FootballTester::testGoalkeeperAddGoalsScored() {
@@ -390,6 +393,8 @@ void FootballTester::testGoalkeeperPrint() {
     cout << "----------- Program printed this: -----------\n";
     string s2 = p->print();
     cout << s2 << endl;
+    delete p;
+    delete t;
     if (s != s2) errorOut_("Goalkeeper print incorrect",1);
     else passOut_("Tested the goalkeeper print.");
 
@@ -397,7 +402,7 @@ void FootballTester::testGoalkeeperPrint() {
 
 void FootballTester::testFantasyTeamAddPlayer() {
 
-    funcname_ = "FootballTester::testGoalkeeperGetScore";
+    funcname_ = "FootballTester::testFantasyTeamAddPlayer";
 
     Team* t1 = new Team("t1");
     Team* t2 = new Team("t2");
@@ -432,6 +437,10 @@ void FootballTester::testFantasyTeamAddPlayer() {
     if (!myteam.addPlayer(q8)) errorOut_("addPlayer incorrectly returned false",1);
     if (myteam.addPlayer(q9)) errorOut_("addPlayer allowed adding 12th player",3);
 
+    delete t1; delete t2;
+    delete p1; delete p2; delete p3; delete p4; delete p5; delete p6;
+    delete p8; delete q2; delete q5; delete q6; delete q8; delete q9;
+
     passOut_("Tested the FantasyTeam addplayer");
 
 }
@@ -464,6 +473,8 @@ void FootballTester::testFantasyTeamGetScore() {
     p5->addGoalsScored();
     p6->addGoalsScored(2);
     if (myteam.getScore() != 27) errorOut_("FantasyTeam getscore incorrect",1);
+    delete t1;
+    delete p1; delete p2; delete p3; delete p4; delete p5; delete p6;
 
     passOut_("Tested the FantasyTeam getScore");
 
