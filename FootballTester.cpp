@@ -120,7 +120,7 @@ void FootballTester::testMidfielderAddGoalsScored() {
         errorOut_("Midfielder score not 6 after 1 goal" + to_string(p->getGoalsScored()),1);
     p->addGoalsScored(2);
     if (p->getScore() != 16)
-        errorOut_("Midfielder score not 16 after 3 goals" + + to_string(p->getGoalsScored()),2);
+        errorOut_("Midfielder score not 16 after 3 goals" + to_string(p->getGoalsScored()),2);
 
     delete p;
     delete t;
