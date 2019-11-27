@@ -129,12 +129,14 @@ Midfielder::~Midfielder() {
 
 int Midfielder::getScore() const {
     int genericScore = Player::getScore();
-    std::cout<< "i go this df " << genericScore << endl;
+    std::cout<< "i go this after getting const " << genericScore << endl;
     //goals points
     genericScore += GOAL_POINT * getGoalsScored();
+    std::cout<< "i go this after getting goal scored " << genericScore << endl;
 
     //conceded points
     genericScore += (Player::getTeam()->getGoalsConceded() == 0) ? NO_GOALS_CONCEDED_POINT : 0;
+    std::cout<< "i go this after conceded points " << genericScore << endl;
 
     return genericScore;
 }
