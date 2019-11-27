@@ -55,6 +55,7 @@ void Player::addAssists(int a) {
 
 int Player::getScore() const {
     //assists
+    cout<< "constructor called"<<endl;
     return ASSISTS_POINT * assists;
 }
 
