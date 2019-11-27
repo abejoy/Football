@@ -14,7 +14,7 @@ void Team::addGoalsConceded(int g) {
 }
 
 Team::~Team() {
-    // no need to delete anything as no pointers created
+    // IMPLEMENT ME
 }
 
 string Team::getTeamName() {
@@ -41,6 +41,7 @@ Player::Player(const string& name, Team* t) {
 
 // don't remove this even if you want to make the destructor pure virtual
 Player::~Player() {
+    // IMPLEMENT ME
 }
 
 void Player::addGoalsScored(int g) {
@@ -98,7 +99,7 @@ Attacker::Attacker(const string& name, Team* t): Player(name, t) {
 }
 
 Attacker::~Attacker() {
-    //no pointer i made
+    // IMPLEMENT ME
 }
 
 int Attacker::getScore() const {
@@ -121,7 +122,7 @@ Midfielder::Midfielder(const string& name, Team* t): Player(name, t)  {
 }
 
 Midfielder::~Midfielder() {
-    // no pointer i made
+    // IMPLEMENT ME
 }
 
 int Midfielder::getScore() const {
@@ -148,7 +149,7 @@ Defender::Defender(const string& name, Team* t): Player(name, t)  {
 }
 
 Defender::~Defender() {
-    // no pointer i made
+    // IMPLEMENT ME
 }
 
 int Defender::getScore() const {
@@ -182,7 +183,7 @@ Goalkeeper::Goalkeeper(const string& name, Team* t): Player(name, t)  {
 }
 
 Goalkeeper::~Goalkeeper() {
-    // no pointer i made
+    // IMPLEMENT ME
 }
 
 void Goalkeeper::addShotsSaved(int ss) {
@@ -221,20 +222,22 @@ string Goalkeeper::print() const {
 // -------------- FantasyTeam ------------------
 
 FantasyTeam::FantasyTeam() {
+    *players = new Player[11];
     for(int i = 0; i < 11; i++){
-        *(players+i) = nullptr;
+        players[i] = nullptr;
     }
     size = 0;
 }
 
 FantasyTeam::~FantasyTeam() {
+    // IMPLEMENT ME
 }
 
 bool FantasyTeam::addPlayer(Player* p) {
 
     if(!checkIfPlayerIsAdded(p) && size < 11) {
         //add player
-        *(players+size) = p;
+        players[size] = p;
         size++;
         return true;
     }
@@ -245,9 +248,8 @@ bool FantasyTeam::addPlayer(Player* p) {
 int FantasyTeam::getScore() const {
     int totalScore = 0;
     for(int i = 0; i <= size; i++){
-        if(*(players+i) != nullptr){
-            Player *temp = *(players + i);
-            totalScore += temp->getScore();
+        if(players[i] != nullptr){
+            totalScore += players[i]->getScore();
         }
     }
     return totalScore;
@@ -255,7 +257,7 @@ int FantasyTeam::getScore() const {
 
 bool FantasyTeam::checkIfPlayerIsAdded(Player *p) {
     for(int i = 0; i <= size; i++){
-        if(*(players+i) == p){
+        if(players[i] == p){
             return true;
         }
     }
