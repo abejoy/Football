@@ -230,6 +230,11 @@ FantasyTeam::FantasyTeam() {
 }
 
 FantasyTeam::~FantasyTeam() {
+
+    for (int i = 0; i <11; i++)
+    {
+        delete players[i];
+    }
 }
 
 bool FantasyTeam::addPlayer(Player* p) {
